@@ -43,7 +43,7 @@ public class CreateThread {
     public static class Thread2 implements Runnable {
         @Override
         public void run() {
-            System.out.println(this.getClass().getName());
+            System.out.println(Thread.currentThread().getName() + "---->"+this.getClass().getName());
         }
     }
 

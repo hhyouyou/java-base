@@ -12,18 +12,32 @@ import java.util.concurrent.Executors;
 public class Executor {
 
     public static void main(String[] args) {
+//        cached();
+//        fixed();
+        single();
+    }
 
-//        ExecutorService executorService = Executors.newCachedThreadPool();
-//        for (int i = 0; i < 5; i++) {
-//            executorService.execute(new CreateThread.Thread2());
-//        }
-//        executorService.shutdown();
+    public static void cached() {
+        ExecutorService executorService =  Executors.newCachedThreadPool();
+        for (int i = 0; i < 4; i++) {
+            executorService.execute(new CreateThread.Thread2());
+        }
+        executorService.shutdown();
+    }
 
-        ExecutorService executorService1 = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 10; i++) {
+    public static void fixed() {
+        ExecutorService executorService1 = Executors.newFixedThreadPool(2);
+        for (int i = 0; i < 4; i++) {
             executorService1.execute(new CreateThread.Thread2());
         }
         executorService1.shutdown();
+    }
 
+    public static void single() {
+        ExecutorService executorService1 = Executors.newSingleThreadExecutor();
+        for (int i = 0; i < 4; i++) {
+            executorService1.execute(new CreateThread.Thread2());
+        }
+        executorService1.shutdown();
     }
 }
