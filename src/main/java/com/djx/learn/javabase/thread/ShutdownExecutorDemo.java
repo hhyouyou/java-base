@@ -8,7 +8,7 @@ import java.util.concurrent.Future;
  * @author dong jing xi
  * @date 2020/8/3 23:12
  **/
-public class ShutdownExecutor {
+public class ShutdownExecutorDemo {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         executorService.execute(() -> {

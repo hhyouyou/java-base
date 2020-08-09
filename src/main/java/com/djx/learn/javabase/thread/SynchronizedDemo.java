@@ -13,7 +13,17 @@ public class SynchronizedDemo {
 
     public static void main(String[] args) {
 //        test1();
-        test2();
+//        test2();
+        test3();
+    }
+
+    private static void test3() {
+        SynchronizedDemo2 demo1 = new SynchronizedDemo2();
+        SynchronizedDemo2 demo2 = new SynchronizedDemo2();
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        executorService.execute(() -> demo1.f1());
+        executorService.execute(() -> demo2.f1());
+        executorService.shutdown();
     }
 
     private static void test2() {
@@ -37,6 +47,16 @@ public class SynchronizedDemo {
         public void f1() {
             synchronized (this) {
                 for (int i = 0; i < 15; i++) {
+                    System.out.print(i + " ");
+                }
+            }
+        }
+    }
+
+    static class SynchronizedDemo2 {
+        public void f1() {
+            synchronized (SynchronizedDemo2.class) {
+                for (int i = 0; i < 100; i++) {
                     System.out.print(i + " ");
                 }
             }

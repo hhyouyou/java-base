@@ -1,7 +1,7 @@
 package com.djx.learn.javabase.thread;
 
 /**
- * 测试中断异常
+ * 测试中断异常 InterruptedException
  *
  * @author dong jing xi
  * @date 2020/8/3 22:50
