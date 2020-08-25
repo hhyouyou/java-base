@@ -1,4 +1,4 @@
-package com.djx.learn.javabase.thread;
+package com.djx.learn.javabase.concurrent;
 
 /**
  * 测试中断方法 Thread.interrupted()

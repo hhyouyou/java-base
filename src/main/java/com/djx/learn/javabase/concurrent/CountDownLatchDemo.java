@@ -1,4 +1,4 @@
-package com.djx.learn.javabase.thread;
+package com.djx.learn.javabase.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -27,7 +27,7 @@ public class CountDownLatchDemo {
 
         for (int i = 0; i < 10; i++) {
             executorService.execute(() -> {
-                System.out.print("one thread count ..");
+                System.out.println("one thread count ..");
                 countDownLatch.countDown();
             });
         }

@@ -1,4 +1,4 @@
-package com.djx.learn.javabase.thread;
+package com.djx.learn.javabase.concurrent;
 
 /**
  * @author dong jing xi

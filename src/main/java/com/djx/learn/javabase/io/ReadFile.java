@@ -13,7 +13,7 @@ import java.net.URL;
  **/
 public class ReadFile {
 
-    private static final String URL = "https://github.com/hhyouyou/README.md";
+    private static final String URL = "https://www.baidu.com";
 
     public static void main(String[] args) {
 
@@ -25,6 +25,7 @@ public class ReadFile {
             while ((str = bufferedReader.readLine()) != null) {
                 System.out.println(str);
             }
+            bufferedReader.close();
 
         } catch (IOException e) {
             e.printStackTrace();

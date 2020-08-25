@@ -1,6 +1,4 @@
-package com.djx.learn.javabase.thread;
-
-import lombok.Synchronized;
+package com.djx.learn.javabase.concurrent;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
