@@ -18,7 +18,7 @@ public class Executor {
     }
 
     public static void cached() {
-        ExecutorService executorService =  Executors.newCachedThreadPool();
+        ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < 4; i++) {
             executorService.execute(new CreateThread.Thread2());
         }
