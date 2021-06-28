@@ -19,8 +19,8 @@ public class SynchronizedDemo {
         SynchronizedDemo2 demo1 = new SynchronizedDemo2();
         SynchronizedDemo2 demo2 = new SynchronizedDemo2();
         ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.execute(() -> demo1.f1());
-        executorService.execute(() -> demo2.f1());
+        executorService.execute(demo1::f1);
+        executorService.execute(demo2::f1);
         executorService.shutdown();
     }
 
@@ -28,16 +28,16 @@ public class SynchronizedDemo {
         SynchronizedDemo1 demo1 = new SynchronizedDemo1();
         SynchronizedDemo1 demo2 = new SynchronizedDemo1();
         ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.execute(() -> demo1.f1());
-        executorService.execute(() -> demo2.f1());
+        executorService.execute(demo1::f1);
+        executorService.execute(demo2::f1);
         executorService.shutdown();
     }
 
     private static void test1() {
         SynchronizedDemo1 synchronizedDemo1 = new SynchronizedDemo1();
         ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.execute(() -> synchronizedDemo1.f1());
-        executorService.execute(() -> synchronizedDemo1.f1());
+        executorService.execute(synchronizedDemo1::f1);
+        executorService.execute(synchronizedDemo1::f1);
         executorService.shutdown();
     }
 
