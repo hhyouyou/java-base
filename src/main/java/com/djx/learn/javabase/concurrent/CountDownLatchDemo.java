@@ -35,4 +35,55 @@ public class CountDownLatchDemo {
         executorService.shutdown();
     }
 
+
+    public static class Driver {
+
+        public static void main(String[] args) throws InterruptedException {
+            int count = 10;
+
+            CountDownLatch startSignal = new CountDownLatch(1);
+            CountDownLatch doneSignal = new CountDownLatch(count);
+
+            for (int i = 0; i < count; i++) {
+                new Thread(new Worker(startSignal, doneSignal), "thread-" + i).start();
+            }
+
+            System.out.println("start");
+            startSignal.countDown();
+            System.out.println("doing...");
+            doneSignal.await();
+            System.out.println("done");
+
+        }
+    }
+
+    public static class Worker implements Runnable {
+
+        private CountDownLatch startSignal;
+        private CountDownLatch doneSignal;
+
+        public Worker(CountDownLatch startSignal, CountDownLatch doneSignal) {
+            this.startSignal = startSignal;
+            this.doneSignal = doneSignal;
+        }
+
+        @Override
+        public void run() {
+
+            try {
+                startSignal.await();
+                doWork();
+                doneSignal.countDown();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        private void doWork() {
+            System.out.println(Thread.currentThread().getName() + ", do");
+        }
+    }
+
+
 }
