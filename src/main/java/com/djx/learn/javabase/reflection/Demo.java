@@ -10,16 +10,6 @@ import java.lang.reflect.Field;
  */
 public class Demo {
 
-    @Data
-    static class Phone {
-        private String name;
-        private String color;
-
-        private void call(String num) {
-            System.out.println("call: " + num);
-        }
-    }
-
     public static void main(String[] args) throws NoSuchFieldException {
 
         Phone phone = new Phone();
@@ -29,6 +19,16 @@ public class Demo {
         Field name = phone.getClass().getDeclaredField("name");
         Class<?> type = name.getType();
 
+    }
+
+    @Data
+    static class Phone {
+        private String name;
+        private String color;
+
+        private void call(String num) {
+            System.out.println("call: " + num);
+        }
     }
 
 }

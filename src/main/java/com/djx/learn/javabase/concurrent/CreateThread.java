@@ -3,7 +3,7 @@ package com.djx.learn.javabase.concurrent;
 import java.util.concurrent.*;
 
 /**
- * 创建线程
+ * 创建线程 的几种方式
  *
  * @author dong jing xi
  * @date 2020/7/29 22:19

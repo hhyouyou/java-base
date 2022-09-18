@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author djx
@@ -17,7 +19,7 @@ public class TaskExecutorDemo {
         // 使用 threadPoolExecutor
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(3, 10
                 , 10, TimeUnit.SECONDS
-                , new ArrayBlockingQueue<>(10), r -> new Thread(r,"task-"), (r,e)-> System.out.println(""));
+                , new ArrayBlockingQueue<>(10), r -> new Thread(r, "task-"), new ThreadPoolExecutor.AbortPolicy());
 
         for (int i = 0; i < 10; i++) {
             threadPoolExecutor.execute(new TaskThread("message:" + i));
